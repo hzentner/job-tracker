@@ -26,5 +26,15 @@ router.post('/newjob', function(req, res) {
 });
 
 });
+
+router.post('/delete/:id', function(req, res) {
+   db.collection('jobs').remove({_id: mongojs.ObjectId(req.params.id)}, function(err, job){
+     if (err)
+       res.send(err);
+     else {
+       res.redirect('/joblist/jobs');
+     }
+   });
+});
  
  module.exports = router;

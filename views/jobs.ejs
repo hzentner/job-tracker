@@ -18,6 +18,7 @@ table, th, td {
   <th align="left">Contact</th>
   <th align="left">Status</th>
   <th align="left">Notes</th>
+  <th align="left"></th>
 </tr>
 <% for (var i=0; i<jobs.length;i++) {%>
 <tr>
@@ -27,6 +28,7 @@ table, th, td {
   <td><%= jobs[i].contact %></td>
   <td><%= jobs[i].stat %></td>
   <td><%= jobs[i].notes %></td>
+  <td><form action="/joblist/delete/<%=jobs[i]._id%>" method="post"> <input type="submit" value="Delete"></td>
 </tr>
 <% } %>
 </table>
