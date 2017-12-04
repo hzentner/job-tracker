@@ -1,14 +1,17 @@
 var express = require('express')
 var path = require('path')
-
+var bodyParser = require('body-parser')
 var app = express()
 var index = require('./index');
+var jobs = require('./jobs');
 
-app.get('/jobs', function(req, res) {
-  res.sendFile(path.join(__dirname + '/jobs.html'));
-});
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', index);
+app.use('/joblist', jobs);
+
+app.set('view engine', 'ejs');
 
 app.listen(3000);
 
