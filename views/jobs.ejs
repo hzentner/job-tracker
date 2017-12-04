@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<style>
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+</style>
+<body>
+<h1>My job list</h1>
+<table>
+<tr>
+  <th align="left">Company</th>
+  <th align="left">Job Title</th>
+  <th align="left">Application Date</th>
+  <th align="left">Contact</th>
+  <th align="left">Status</th>
+  <th align="left">Notes</th>
+</tr>
+<% for (var i=0; i<jobs.length;i++) {%>
+<tr>
+  <td><%= jobs[i].company %></td>
+  <td><%= jobs[i].jobtitle %></td> 
+  <td><%= jobs[i].appdate %></td>
+  <td><%= jobs[i].contact %></td>
+  <td><%= jobs[i].stat %></td>
+  <td><%= jobs[i].notes %></td>
+</tr>
+<% } %>
+</table>
+<br><br>
+<p>Add a new job!</p>
+<form action="/joblist/newjob" method="post">
+Company name: <input type="text" name="company" id="comp"><br>
+Job title: <input type="text" name="jobtitle" id="title"><br>
+Date applied: <input type="text" name="appdate" id="date"><br>
+Contact (N/A if none): <input type="text" name="contact" id="cont"><br>
+Status (Applied, Interviewing, etc): <input type="text" name="stat" id="stat"><br>
+Notes: <input type="text" name="notes" id="not"><br>
+<input type="submit">
+</form><br>
+</body>
+</html>
