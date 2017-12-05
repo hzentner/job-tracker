@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body>
+<h1>View/Edit</h1><br>
+<p>Company: <%=job.company %><br>
+Job Title: <%=job.jobtitle %><br>
+Application Date: <%=job.appdate %><br>
+Contact: <%=job.contact %><br>
+Status: <%=job.stat %><br>
+Notes: <%=job.notes %><br>
+</p>
+<br><br>
+Edit:
+<form action="/joblist/edit/<%=job._id%>" method=post>
+Company name: <input type="text" name="company" id="comp" value="<%=job.company%>"><br>
+Job title: <input type="text" name="jobtitle" id="title" value="<%=job.jobtitle%>"><br>
+Date applied: <input type="text" name="appdate" id="date" value="<%=job.appdate%>"><br>
+Contact (N/A if none): <input type="text" name="contact" id="cont" value="<%=job.contact%>"><br>
+Status (Applied, Interviewing, etc): <input type="text" name="stat" id="stat" value="<%=job.stat%>"><br>
+Notes: <input type="text" name="notes" id="not" value="<%=job.notes%>"><br>
+<input type="submit">
+</form>
+</body>
+</html>

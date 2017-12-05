@@ -28,13 +28,33 @@ router.post('/newjob', function(req, res) {
 });
 
 router.post('/delete/:id', function(req, res) {
-   db.collection('jobs').remove({_id: mongojs.ObjectId(req.params.id)}, function(err, job){
+  db.collection('jobs').remove({_id: mongojs.ObjectId(req.params.id)}, function(err, job){
      if (err)
        res.send(err);
      else {
        res.redirect('/joblist/jobs');
      }
    });
+});
+
+router.get('/edit/:id', function(req, res) {
+   db.collection('jobs').findOne({_id: mongojs.ObjectId(req.params.id)}, function(err, item){
+     if (err)
+       res.send(err);
+     else {
+        res.render('singlejob.ejs', {job:item});
+     }
+   });
+});
+
+router.post('/edit/:id', function(req, res) {
+  db.collection('jobs').update({_id: mongojs.ObjectId(req.params.id)}, {company: req.body.company, jobtitle: req.body.jobtitle, appdate: req.body.appdate, contact: req.body.contact, stat: req.body.stat, notes: req.body.notes}, {}, function(err, job) {
+   if (err)
+      res.send(err);
+   else {
+     res.redirect('/joblist/jobs');
+   }
+});
 });
  
  module.exports = router;

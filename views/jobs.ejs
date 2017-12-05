@@ -19,6 +19,7 @@ table, th, td {
   <th align="left">Status</th>
   <th align="left">Notes</th>
   <th align="left"></th>
+  <th align="left"></th>
 </tr>
 <% for (var i=0; i<jobs.length;i++) {%>
 <tr>
@@ -28,8 +29,13 @@ table, th, td {
   <td><%= jobs[i].contact %></td>
   <td><%= jobs[i].stat %></td>
   <td><%= jobs[i].notes %></td>
-  <td><form action="/joblist/delete/<%=jobs[i]._id%>" method="post"> <input type="submit" value="Delete"></td>
-</tr>
+  <form method="post">
+  <td><button type="submit" formaction="/joblist/delete/<%=jobs[i]._id%>">Delete</button></td>
+  </form>
+  <form method="get">
+  <td><button type="submit" formaction="/joblist/edit/<%=jobs[i]._id%>">View/Edit</button></td>
+ </form>
+ </tr>
 <% } %>
 </table>
 <br><br>
