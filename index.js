@@ -21,4 +21,18 @@ router.post('/login', function(req, res) {
 });
 });
 
+router.post('/register', function(req, res) {
+   res.sendFile(path.join(__dirname + '/register.html')); 
+});
+
+router.post('/signup', function(req, res) {
+   var user = req.body;
+   db.collection('users').save(user, function(err, user) {
+   if (err)
+      res.send(err);
+   else
+      res.redirect('/joblist/jobs');
+});
+});
+
 module.exports = router;
