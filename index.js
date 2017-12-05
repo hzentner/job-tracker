@@ -13,7 +13,7 @@ router.post('/login', function(req, res) {
   if (err)
      res.send(err);
   if (user) {
-    res.redirect('/joblist/jobs');
+    res.redirect('/joblist/' + req.body.username + '/jobs');
   }
   else {
      res.sendFile(path.join(__dirname + '/invalid.html'));
@@ -31,7 +31,7 @@ router.post('/signup', function(req, res) {
    if (err)
       res.send(err);
    else
-      res.redirect('/joblist/jobs');
+      res.redirect('/joblist/' + req.body.username + '/jobs');
 });
 });
 

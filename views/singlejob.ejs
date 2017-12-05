@@ -13,7 +13,8 @@ Notes: <%=job.notes %><br>
 </p>
 <br><br>
 Edit:
-<form action="/joblist/edit/<%=job._id%>" method=post>
+<form action="/joblist/<%=username%>/edit/<%=job._id%>" method=post>
+<input type="hidden" name="username" value="<%=username%>">
 Company name: <input type="text" name="company" id="comp" value="<%=job.company%>"><br>
 Job title: <input type="text" name="jobtitle" id="title" value="<%=job.jobtitle%>"><br>
 Date applied: <input type="text" name="appdate" id="date" value="<%=job.appdate%>"><br>
