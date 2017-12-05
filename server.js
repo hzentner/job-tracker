@@ -1,7 +1,8 @@
 var express = require('express')
 var path = require('path')
-var bodyParser = require('body-parser')
 var app = express()
+var bodyParser = require('body-parser')
+
 var index = require('./index');
 var jobs = require('./jobs');
 
@@ -12,7 +13,7 @@ app.use('/', index);
 app.use('/joblist', jobs);
 
 app.set('view engine', 'ejs');
-
+app.engine('html', require('ejs').renderFile);
 app.listen(3000);
 
 console.log("Server started on port 3000");
