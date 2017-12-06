@@ -58,7 +58,7 @@ router.post('/:user/edit/:id', function(req, res) {
 });
 
 router.get('/logout', function(req, res) {
-   res.sendFile(path.join(__dirname + '/index.html'));
+   res.redirect('/');
 });
  
  module.exports = router;

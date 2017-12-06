@@ -10,6 +10,10 @@ router.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+router.post('/', function(req, res) {
+  res.sendFile(path.join(__dirname + '/index.html'));
+});
+
 router.post('/login', function(req, res) {
    db.collection('users').findOne({username: req.body.username}, function(err, user) {
   if (err)
