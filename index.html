@@ -1,18 +1,45 @@
 <!DOCTYPE html>
 <html>
 <style>
+#loginbutton {
+   background-color: lightgreen;
+   font-size: 20px;
+}
+#signupbutton {
+   background-color: lightgreen;
+   font-size: 20px;
+}
+div {
+  background-image: url('light-blue-background-3.jpg');
+  border-radius: 25px;
+  font-family: Arial;
+  width: 350px;
+  height: 275px;
+  position: absolute;
+  text-align: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  
+  margin: auto;
+}
+
 body {
   background-image: url('SeeingSpots_1400x900-1024x658.jpg');
+  background-size: 100%;
 }
 </style>
 <body>
+<div>
 <h1>Welcome to the job tracker!</h1>
 <p>A tool to expedite your job application process</p>
 <form action="/login" method="post">
-Username: <input type="text" name="username"><br>
-Password: <input type="password" name="password"><br>
-<button type="submit">Log in</button> 
- <button type=submit" formaction="/register">Sign up</button>
+Username: <input type="text" name="username"><br><br>
+Password: <input type="password" name="password"><br><br>
+<button type="submit" id=loginbutton>Log in</button> 
+ <button type=submit id="signupbutton" formaction="/register">Sign up</button>
 </form>
+</div>
 </body>
 </html>

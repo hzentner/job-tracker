@@ -24,7 +24,6 @@ router.post('/login', function(req, res) {
      else
        res.sendFile(path.join(__dirname + '/invalid.html'));
      
-   //});
   }
   });
 });
