@@ -9,10 +9,12 @@ var db = mongojs('mongodb://hannah:hannah@ds044587.mlab.com:44587/jobsdb', ['use
 router.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
+//display homepage
 
 router.post('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
+//display homepage after failed login
 
 router.post('/login', function(req, res) {
    db.collection('users').findOne({username: req.body.username}, function(err, user) {
@@ -31,10 +33,12 @@ router.post('/login', function(req, res) {
   }
   });
 });
+//login, verify using password-hash function
 
 router.post('/register', function(req, res) {
    res.sendFile(path.join(__dirname + '/register.html')); 
 });
+//sends user to registration page
 
 router.post('/signup', function(req, res) {
    var user = req.body;
@@ -46,5 +50,6 @@ router.post('/signup', function(req, res) {
       res.redirect('/joblist/' + req.body.username + '/jobs');
 });
 });
+//add user after they sign up
 
 module.exports = router;

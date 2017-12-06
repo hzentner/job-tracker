@@ -14,6 +14,7 @@ router.get('/:user/jobs', function(req, res) {
      }
   });
 });
+//get all jobs for a user
 
 router.post('/:user/newjob', function(req, res) {
  var job = req.body;
@@ -27,6 +28,8 @@ router.post('/:user/newjob', function(req, res) {
 
 });
 
+//add a new job
+
 router.post('/:user/delete/:id', function(req, res) {
   db.collection('jobs').remove({_id: mongojs.ObjectId(req.params.id)}, function(err, job){
      if (err)
@@ -36,6 +39,7 @@ router.post('/:user/delete/:id', function(req, res) {
      }
    });
 });
+//delete a job
 
 router.get('/:user/edit/:id', function(req, res) {
    db.collection('jobs').findOne({_id: mongojs.ObjectId(req.params.id)}, function(err, item){
@@ -46,6 +50,7 @@ router.get('/:user/edit/:id', function(req, res) {
      }
    });
 });
+//view details for a selected job
 
 router.post('/:user/edit/:id', function(req, res) {
   db.collection('jobs').update({_id: mongojs.ObjectId(req.params.id)}, {username: req.body.username, company: req.body.company, jobtitle: req.body.jobtitle, appdate: req.body.appdate, contact: req.body.contact, stat: req.body.stat, notes: req.body.notes}, {}, function(err, job) {
@@ -56,9 +61,11 @@ router.post('/:user/edit/:id', function(req, res) {
    }
 });
 });
+//edit a job
 
 router.get('/logout', function(req, res) {
    res.redirect('/');
 });
- 
+//logout to return to homepage 
+
  module.exports = router;
