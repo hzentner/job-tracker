@@ -2,8 +2,45 @@
 <head>
 <meta charset="UTF-8">
 </head>
+<style>
+ body {
+  background-image: url('/AbstractRainbowBackgroundVector_thumb.jpg');
+  background-size: 100%;
+}
+#info {
+  background-color:darkturquoise;
+  border-radius: 25px;
+  font-family: Arial;
+  width: 350px;
+  height: 250px;
+  text-align: center;
+  margin: auto;
+}
+#edit {
+ background-color:salmon;
+ border-radius: 25px;
+ font-family: Arial;
+ width: 350px;
+ height: 470px;
+ text-align: center;
+ margin: auto;
+}
+#sendchanges {
+  background-color: lightgreen;
+  font-size: 20px;
+}
+#logout {
+   background-color:lightgreen;
+   font-size:20px;
+   position:absolute;
+   top:0;
+   right:0;
+}
+</style>
 <body>
-<h1>View/Edit</h1><br>
+<div id="info">
+<br>
+<h3>Job info</h3><br>
 <p>Company: <%=job.company %><br>
 Job Title: <%=job.jobtitle %><br>
 Application Date: <%=job.appdate %><br>
@@ -11,17 +48,24 @@ Contact: <%=job.contact %><br>
 Status: <%=job.stat %><br>
 Notes: <%=job.notes %><br>
 </p>
+</div>
 <br><br>
-Edit:
+<div id="edit">
+<br>
+<h3>Edit:</h3><br>
 <form action="/joblist/<%=username%>/edit/<%=job._id%>" method=post>
 <input type="hidden" name="username" value="<%=username%>">
-Company name: <input type="text" name="company" id="comp" value="<%=job.company%>"><br>
-Job title: <input type="text" name="jobtitle" id="title" value="<%=job.jobtitle%>"><br>
-Date applied: <input type="text" name="appdate" id="date" value="<%=job.appdate%>"><br>
-Contact (N/A if none): <input type="text" name="contact" id="cont" value="<%=job.contact%>"><br>
-Status (Applied, Interviewing, etc): <input type="text" name="stat" id="stat" value="<%=job.stat%>"><br>
-Notes: <input type="text" name="notes" id="not" value="<%=job.notes%>"><br>
-<input type="submit">
+Company name:<br> <input type="text" name="company" id="comp" value="<%=job.company%>"><br><br>
+Job title:<br> <input type="text" name="jobtitle" id="title" value="<%=job.jobtitle%>"><br><br>
+Date applied:<br> <input type="text" name="appdate" id="date" value="<%=job.appdate%>"><br><br>
+Contact (N/A if none):<br> <input type="text" name="contact" id="cont" value="<%=job.contact%>"><br><br>
+Status (Applied, Interviewing, etc):<br> <input type="text" name="stat" id="stat" value="<%=job.stat%>"><br><br>
+Notes:<br> <input type="text" name="notes" id="not" value="<%=job.notes%>"><br><br>
+<input type="submit" id="sendchanges">
+</form>
+</div>
+<form method="get">
+<button type="submit" id="logout" formaction="/joblist/logout">Log Out</button>
 </form>
 </body>
 </html>
