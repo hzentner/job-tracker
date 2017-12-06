@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', index);
 app.use('/joblist', jobs);
+app.use(express.static(__dirname + '/images'));
 
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
