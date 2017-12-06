@@ -14,7 +14,7 @@ app.use('/joblist', jobs);
 
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
 
 console.log("Server started on port 3000");
 
