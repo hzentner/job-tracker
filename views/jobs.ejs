@@ -39,7 +39,7 @@ div {
   text-align: center;
   margin: auto;
 }
-#newjob {
+#newjob, #delete, #viewedit {
   background-color:lightgreen;
   font-size:20px;
 }
@@ -74,10 +74,10 @@ div {
   <td width="120px"><%= jobs[i].stat %></td>
   <td width="120px"><%= jobs[i].notes %></td>
   <form method="post">
-  <td width="120px"><button type="submit" formaction="/joblist/<%=username%>/delete/<%=jobs[i]._id%>">Delete</button></td>
+  <td width="120px"><button type="submit" id="delete" formaction="/joblist/<%=username%>/delete/<%=jobs[i]._id%>">Delete</button></td>
   </form>
   <form method="get">
-  <td width="120px"><button type="submit" formaction="/joblist/<%=username%>/edit/<%=jobs[i]._id%>">View/Edit</button></td>
+  <td width="120px"><button type="submit" id="viewedit" formaction="/joblist/<%=username%>/edit/<%=jobs[i]._id%>">View/Edit</button></td>
  </form>
  </tr>
 <% } %>
