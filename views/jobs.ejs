@@ -3,55 +3,103 @@
 <meta charset="UTF-8">
 </head>
 <style>
+h1 {
+  font-family:Arial;
+  text-align: center;
+}
+body {
+  background-image: url('/AbstractRainbowBackgroundVector_thumb.jpg');
+  background-size: 100%;
+}
 table, th, td {
+  font-family: Arial;
+  margin: auto;
+}
+tr {
+  border-bottom: 1px solid black;
+}
+td {
+  background-color: papayawhip;
+  padding: 10px;
+}
+th {
+  background-color: lightcyan;
+  padding:10px;
+}
+table {
   border: 1px solid black;
   border-collapse: collapse;
+}
+div {
+  background-color:darkturquoise;
+  border-radius: 25px;
+  font-family: Arial;
+  width: 350px;
+  height: 450px;
+  text-align: center;
+  margin: auto;
+}
+#newjob {
+  background-color:lightgreen;
+  font-size:20px;
+}
+#logout {
+  background-color:lightgreen;
+  font-size:20px;
+  position:absolute;
+  top:0;
+  right:0;
 }
 </style>
 <body>
 <h1>My job list</h1>
+<% if (jobs.length != 0) {%>
 <table>
 <tr>
-  <th align="left">Company</th>
-  <th align="left">Job Title</th>
-  <th align="left">Application Date</th>
-  <th align="left">Contact</th>
-  <th align="left">Status</th>
-  <th align="left">Notes</th>
-  <th align="left"></th>
-  <th align="left"></th>
+  <th align="left" width="120px">Company</th>
+  <th align="left" width="120px">Job Title</th>
+  <th align="left" width="120px">Application Date</th>
+  <th align="left" width="120px">Contact</th>
+  <th align="left" width="120px">Status</th>
+  <th align="left" width="120px">Notes</th>
+  <th align="left" width="120px"></th>
+  <th align="left" width="120px"></th>
 </tr>
 <% for (var i=0; i<jobs.length;i++) {%>
 <tr>
-  <td><%= jobs[i].company %></td>
-  <td><%= jobs[i].jobtitle %></td> 
-  <td><%= jobs[i].appdate %></td>
-  <td><%= jobs[i].contact %></td>
-  <td><%= jobs[i].stat %></td>
-  <td><%= jobs[i].notes %></td>
+  <td width="120px"><%= jobs[i].company %></td>
+  <td width="120px"><%= jobs[i].jobtitle %></td> 
+  <td width="120px"><%= jobs[i].appdate %></td>
+  <td width="120px"><%= jobs[i].contact %></td>
+  <td width="120px"><%= jobs[i].stat %></td>
+  <td width="120px"><%= jobs[i].notes %></td>
   <form method="post">
-  <td><button type="submit" formaction="/joblist/<%=username%>/delete/<%=jobs[i]._id%>">Delete</button></td>
+  <td width="120px"><button type="submit" formaction="/joblist/<%=username%>/delete/<%=jobs[i]._id%>">Delete</button></td>
   </form>
   <form method="get">
-  <td><button type="submit" formaction="/joblist/<%=username%>/edit/<%=jobs[i]._id%>">View/Edit</button></td>
+  <td width="120px"><button type="submit" formaction="/joblist/<%=username%>/edit/<%=jobs[i]._id%>">View/Edit</button></td>
  </form>
  </tr>
 <% } %>
 </table>
 <br><br>
-<p>Add a new job!</p>
+<% } %>
+<div>
+<br>
+<p>Add a new job!</p><br>
 <form action="/joblist/<%=username%>/newjob" method="post">
 <input type="hidden" name="username" value="<%= username %>">
-Company name: <input type="text" name="company" id="comp"><br>
-Job title: <input type="text" name="jobtitle" id="title"><br>
-Date applied: <input type="text" name="appdate" id="date"><br>
-Contact (N/A if none): <input type="text" name="contact" id="cont"><br>
-Status (Applied, Interviewing, etc): <input type="text" name="stat" id="stat"><br>
-Notes: <input type="text" name="notes" id="not"><br>
-<input type="submit">
+Company name:<br> <input type="text" name="company" id="comp"><br><br>
+Job title:<br> <input type="text" name="jobtitle" id="title"><br><br>
+Date applied:<br> <input type="text" name="appdate" id="date"><br><br>
+Contact (N/A if none):<br> <input type="text" name="contact" id="cont"><br><br>
+Status (Applied, Interviewing, etc):<br> <input type="text" name="stat" id="stat"><br><br>
+Notes:<br> <input type="text" name="notes" id="not"><br><br>
+<input type="submit" id="newjob">
 </form><br><br>
+</div>
 <form method="get">
-<button type="submit" formaction="/joblist/logout">Log Out</button>
+<button type="submit" id="logout" formaction="/joblist/logout">Log Out</button>
 </form>
 </body>
 </html>

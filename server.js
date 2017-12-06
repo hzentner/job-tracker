@@ -11,10 +11,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 app.use('/', index);
 app.use('/joblist', jobs);
-app.use(express.static(__dirname + '/images'));
+//app.use(express.static(__dirname + '/images'));
 
 app.set('view engine', 'ejs');
 app.engine('html', require('ejs').renderFile);
+app.use(express.static(__dirname + '/images'));
 app.listen(process.env.PORT || 3000);
 
 console.log("Server started on port 3000");
